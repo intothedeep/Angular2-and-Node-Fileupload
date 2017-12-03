@@ -12,7 +12,7 @@ How to run:
 3. ng serve --open for angular and gulp for node
 
 later: 
-- Add download part and Need to solve how to display pictures uploaded on the server on the client.
+- Add download part and Need to solve how to display pictures from the server at the client.
 
 This, below, is where I refer to build this application.
 https://github.com/rahil471/File-upload-Angular2-Nodejs
