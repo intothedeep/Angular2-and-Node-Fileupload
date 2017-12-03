@@ -1,12 +1,15 @@
+'use strict';
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
+var index = require('./routes/index');
 var upload = require('./routes/upload');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -22,8 +25,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', upload);
-app.use('/users', users);
+app.use('/', index);
+app.use('/api/files/', upload);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,5 +45,19 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// CONNECT TO MONGODB SERVER
+mongoose.set('debug', true);
+
+var db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', function(){
+    // CONNECTED TO MONGODB SERVER
+    console.log("Connected to mongod server");
+});
+
+// Node.js의 native Promise 사용
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/board', { useMongoClient: true });
 
 module.exports = app;

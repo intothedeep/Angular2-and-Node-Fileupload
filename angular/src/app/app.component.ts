@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,5 @@ import { FileUploader } from 'ng2-file-upload';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    public uploader:FileUploader = new FileUploader({url:'http://localhost:3000/upload'});
+    title = "File Upload Angular2 Client";
 }

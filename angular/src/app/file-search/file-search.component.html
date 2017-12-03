@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4>File Search</h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let file of files$ | async" >
+      <a routerLink="/detail/{{file.fileSeq}}">
+        {{file.originalname}}
+      </a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,13 @@
+<div *ngIf="file">
+
+  <h2>{{ file.originalname | uppercase }} Details</h2>
+  <div><span>fileSeq: </span>{{file.fileSeq}}</div>
+  <div>
+    <label> originalname:
+      <input [(ngModel)]="file.originalname" placeholder="originalname"/>
+    </label>
+    <button (click)="goBack()">Go Back</button>
+    <button (click)="save()">save</button>
+  </div>
+
+</div>
